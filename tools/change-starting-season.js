@@ -1,8 +1,6 @@
-const fs = require("fs");
-
 if (process.argv.length < 4) {
 	console.error(
-		"Error: requires a season and a league file as input, like:\n$ node tools/change-year.js 2005 file.json",
+		"Error: requires a season and a league file as input, like:\n$ node tools/change-starting-season.js 2005 file.json",
 	);
 	process.exit(1);
 }
@@ -11,12 +9,12 @@ const targetSeason = parseInt(process.argv[2], 10);
 
 if (Number.isNaN(targetSeason)) {
 	console.error(
-		"Error: invalid season. This script requires a season and a league file as input, like:\n$ node tools/change-year.js 2005 file.json",
+		"Error: invalid season. This script requires a season and a league file as input, like:\n$ node tools/change-starting-season.js 2005 file.json",
 	);
 	process.exit(1);
 }
 
-const league = JSON.parse(fs.readFileSync(process.argv[3], "utf8"));
+const league = require(process.argv[3]);
 
 let currentSeason;
 if (league.hasOwnProperty("startingSeason")) {

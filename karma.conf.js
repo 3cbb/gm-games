@@ -1,8 +1,6 @@
-/* eslint-env node */
+const karmaConfig = require("./tools/lib/karmaConfig");
 
-const karmaConfig = require("./tools/karmaConfig");
-
-module.exports = function(config) {
+module.exports = function (config) {
 	config.set({
 		...karmaConfig,
 		browsers: ["ChromeHeadless", "FirefoxHeadless"],

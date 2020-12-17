@@ -1,12 +1,10 @@
-/* eslint-env node */
 module.exports = {
 	moduleNameMapper: {
-		// Football cause schema is empty currently, should be faster
-		"^league-schema$": "<rootDir>/public/football/files/league-schema.json",
-		"^player-names$": "<rootDir>/src/deion/worker/data/names-test.json",
+		"^player-names$": "<rootDir>/src/worker/data/names-test.json",
+		"^bbgm-polyfills$": "<rootDir>/src/common/polyfills-noop.ts",
+
+		// This is assumed to be generated prior to rollup being started
+		"^league-schema$": "<rootDir>/build/files/league-schema.json",
 	},
-	setupFilesAfterEnv: [
-		"./src/deion/test/jest.js",
-		"./src/basketball/worker/index.js",
-	],
+	setupFilesAfterEnv: ["./src/test/jest.ts", "./src/worker/index.ts"],
 };
